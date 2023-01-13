@@ -6,6 +6,7 @@ RUN apt-get install nodejs -y
 
 WORKDIR /app
 COPY . /app
+COPY package.json
 RUN npm install
 CMD ["node", "index.js"]
 EXPOSE 6892
