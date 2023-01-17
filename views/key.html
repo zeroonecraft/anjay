@@ -11,6 +11,21 @@
     <link rel="stylesheet" href="/public/js/script.js" />
     <!-- import the webpage's javascript file -->
     <script src="/public/js/script.js" defer></script>
+    	<!-- Disabled Right Click -->
+	<script>
+		document.addEventListener("contextmenu", function(e){
+			e.preventDefault();
+		}, false)
+	</script>
+	<!-- Disabled Shortcut Code -->
+	<script>
+		document.addEventListener("keydown", function(e){
+			if (e.ctrlKey || e.keyCode==123) {
+				e.stopPropagation();
+				e.preventDefault();
+			}
+		});
+	</script>
 
 <style>
 *{

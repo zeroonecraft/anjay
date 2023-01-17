@@ -14,6 +14,7 @@ app.use(cors())
 app.use(secure)
 app.use(express.static("public"))
 app.use(favicon(path.join(__dirname,'favicon.ico')))
+app.use('/api', apirouter)
 
 app.get('/', (req, res) => {
     res.sendFile(__path + '/views/home.html')
@@ -27,14 +28,12 @@ app.get('/getkey', (req, res) => {
 app.get('/yourkey', (req, res) => {
     res.sendFile(__path + '/views/key.html')
 })
-app.use('/api', apirouter)
-
 app.get('/runtime', (req, res) => {
-	 res.json({
-	   status: true,
-	   creator: `${creator}`,
-	   runtime: runtime(process.uptime()),
-	})
+	res.json({
+	  status: true,
+	  creator: `${creator}`,
+	  runtime: runtime(process.uptime()),
+   })
 })
 
 app.listen(PORT, () => {

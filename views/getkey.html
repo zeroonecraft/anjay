@@ -11,6 +11,21 @@
     <link rel="stylesheet" href="/public/js/script.js" />
     <!-- import the webpage's javascript file -->
     <script src="/public/js/script.js" defer></script>
+    <!-- Disabled Right Click -->
+	<script>
+		document.addEventListener("contextmenu", function(e){
+			e.preventDefault();
+		}, false)
+	</script>
+	<!-- Disabled Shortcut Code -->
+	<script>
+		document.addEventListener("keydown", function(e){
+			if (e.ctrlKey || e.keyCode==123) {
+				e.stopPropagation();
+				e.preventDefault();
+			}
+		});
+	</script>
 
 <style>
 *{
@@ -145,7 +160,7 @@ input[type="number"]{
     </div>
     <input style="border: none;" type="text" id="Captcha" class="form-control" readonly>
     <br>
-      <input class="form-control" id="txtInput" style="autocomplete=off;" required>
+      <input class="form-control" id="txtInput" autocomplete="off" required>
     <br>
     <div style="text-align: center; color: #FFFFFF;">
         <button class="glow-on-hover" id="CheckCaptcha" onclick="CheckValidCaptcha();">Check</button>

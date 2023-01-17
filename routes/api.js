@@ -32,22 +32,22 @@ _ = require('lodash')
 loghandler = {
 	noapikey:{
 		status: 403,
-        message: 'Masukkan parameter apikey',
+        message: '[!] Masukkan parameter apikey',
         maintanied_by: `${creator}`
     },
     error: {
         status: 503,
-        message: 'Service Unavaible, Sedang dalam perbaikan',
+        message: '[!] Service Unavaible, Sedang dalam perbaikan',
         maintanied_by: `${creator}`
     },
     apikey: {
     	status: 403,
-    	message: 'Forbiden, Invalid apikey',
+    	message: '[!] Forbiden, Invalid apikey',
     	maintanied_by: `${creator}`
     },
     noturl: {
     	status: 403,
-    	message: 'Forbiden, Invlid url, masukkan parameter url',
+    	message: '[!] Forbiden, Invlid url, masukkan parameter url',
       maintanied_by: `${creator}`
     }
 }
@@ -262,7 +262,7 @@ router.get('/download/facebook', async (req, res, next) => {
           var apikey = req.query.apikey
           var url = req.query.url
        	if(!apikey) return res.json(loghandler.noapikey)
-        if (!url) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter url"})
+        if (!url) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter url"})
         if(listkey.includes(apikey)){
         const result = await scr.savefrom(url)
              res.json({
@@ -280,7 +280,7 @@ router.get('/download/instagram', async (req, res, next) => {
           var apikey = req.query.apikey
           var url = req.query.url
        	if(!apikey) return res.json(loghandler.noapikey)
-       if (!url) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter username"})
+       if (!url) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter username"})
         if(listkey.includes(apikey)){
        let iglu = await scr.instagramdl(url).catch(async _ => await scr.instagramdlv2(url)).catch(async _ => await scr.instagramdlv3(url)).catch(async _ => await scr.instagramdlv4(url))
 		var result = iglu;
@@ -299,7 +299,7 @@ router.get('/download/pinterest', async (req, res, next) => {
           var apikey = req.query.apikey
           var url = req.query.q
        	if(!apikey) return res.json(loghandler.noapikey)
-       if (!url) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter q"})
+       if (!url) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter q"})
         if(listkey.includes(apikey)){
        scr.pinterest(url)
 	.then(data => {
@@ -320,7 +320,7 @@ router.get('/download/tiktok', async (req, res, next) => {
           var apikey = req.query.apikey
           var url = req.query.url
        	if(!apikey) return res.json(loghandler.noapikey)
-       if (!url) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter url"})
+       if (!url) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter url"})
         if(listkey.includes(apikey)){
        let ttlu = await scr.tiktokdl(url).catch(async _ => await scr.tiktokdlv2(url))
 		var result = ttlu;
@@ -339,7 +339,7 @@ router.get('/download/ytmp3', async (req, res, next) => {
           var apikey = req.query.apikey
           var url = req.query.url
        	if(!apikey) return res.json(loghandler.noapikey)
-       if (!url) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter url"})
+       if (!url) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter url"})
         if(listkey.includes(apikey)){
 const { id, thumbnail, audio: _audio, title } = await scr.youtubedlv2(url)
 try {
@@ -366,7 +366,7 @@ router.get('/download/ytmp4', async (req, res, next) => {
           var apikey = req.query.apikey
        	var url = req.query.url
        	if(!apikey) return res.json(loghandler.noapikey)
-       if (!url) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter url"})
+       if (!url) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter url"})
         if(listkey.includes(apikey)){
        const { id, thumbnail, video: _video, title } = await scr.youtubedlv2(url)
 try{
@@ -393,7 +393,7 @@ let kin = await video.download()
 router.get('/textpro/pencil', async (req, res, next) => {
           var apikey = req.query.apikey
        	var text = req.query.text
-        if(!text) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter text"})
+        if(!text) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter text"})
        	if(!apikey) return res.json(loghandler.noapikey)
         if(listkey.includes(apikey)){
        zero.textpro("https://textpro.me/create-a-sketch-text-effect-online-1044.html", [text])
@@ -408,7 +408,7 @@ router.get('/textpro/pencil', async (req, res, next) => {
 router.get('/textpro/glitch', async (req, res, next) => {
           var apikey = req.query.apikey
        	var text = req.query.text
-        if(!text) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter text"})
+        if(!text) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter text"})
        	if(!apikey) return res.json(loghandler.noapikey)
         if(listkey.includes(apikey)){
        zero.textpro("https://textpro.me/create-impressive-glitch-text-effects-online-1027.html", [text])
@@ -423,7 +423,7 @@ router.get('/textpro/glitch', async (req, res, next) => {
 router.get('/textpro/blackpink', async (req, res, next) => {
           var apikey = req.query.apikey
        	var text = req.query.text
-        if(!text) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter text"})
+        if(!text) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter text"})
        	if(!apikey) return res.json(loghandler.noapikey)
         if(listkey.includes(apikey)){
        zero.textpro("https://textpro.me/create-blackpink-logo-style-online-1001.html", [text])
@@ -438,7 +438,7 @@ router.get('/textpro/blackpink', async (req, res, next) => {
 router.get('/textpro/berry', async (req, res, next) => {
           var apikey = req.query.apikey
        	var text = req.query.text
-        if(!text) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter text"})
+        if(!text) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter text"})
        	if(!apikey) return res.json(loghandler.noapikey)
         if(listkey.includes(apikey)){
        zero.textpro("https://textpro.me/create-berry-text-effect-online-free-1033.html", [text])
@@ -453,7 +453,7 @@ router.get('/textpro/berry', async (req, res, next) => {
 router.get('/textpro/neon', async (req, res, next) => {
           var apikey = req.query.apikey
        	var text = req.query.text
-        if(!text) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter text"})
+        if(!text) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter text"})
        	if(!apikey) return res.json(loghandler.noapikey)
         if(listkey.includes(apikey)){
        zero.textpro("https://textpro.me/neon-light-text-effect-online-882.html", [text])
@@ -468,7 +468,7 @@ router.get('/textpro/neon', async (req, res, next) => {
 router.get('/textpro/logobear', async (req, res, next) => {
           var apikey = req.query.apikey
        	var text = req.query.text
-        if(!text) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter text"})
+        if(!text) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter text"})
        	if(!apikey) return res.json(loghandler.noapikey)
         if(listkey.includes(apikey)){
        zero.textpro("https://textpro.me/online-black-and-white-bear-mascot-logo-creation-1012.html", [text])
@@ -483,7 +483,7 @@ router.get('/textpro/logobear', async (req, res, next) => {
 router.get('/textpro/3dchristmas', async (req, res, next) => {
           var apikey = req.query.apikey
        	var text = req.query.text
-        if(!text) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter text"})
+        if(!text) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter text"})
        	if(!apikey) return res.json(loghandler.noapikey)
         if(listkey.includes(apikey)){
        zero.textpro("https://textpro.me/3d-christmas-text-effect-by-name-1055.html", [text])
@@ -498,7 +498,7 @@ router.get('/textpro/3dchristmas', async (req, res, next) => {
 router.get('/textpro/thunder', async (req, res, next) => {
           var apikey = req.query.apikey
        	var text = req.query.text
-        if(!text) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter text"})
+        if(!text) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter text"})
        	if(!apikey) return res.json(loghandler.noapikey)
         if(listkey.includes(apikey)){
        zero.textpro("https://textpro.me/online-thunder-text-effect-generator-1031.html", [text])
@@ -513,7 +513,7 @@ router.get('/textpro/thunder', async (req, res, next) => {
 router.get('/textpro/3dboxtext', async (req, res, next) => {
           var apikey = req.query.apikey
        	var text = req.query.text
-        if(!text) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter text"})
+        if(!text) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter text"})
        	if(!apikey) return res.json(loghandler.noapikey)
         if(listkey.includes(apikey)){
        zero.textpro("https://textpro.me/3d-box-text-effect-online-880.html", [text])
@@ -529,8 +529,8 @@ router.get('/textpro/glitch2', async (req, res, next) => {
           var apikey = req.query.apikey
        	var textbesar = req.query.textbesar
        	var textkecil = req.query.textkecil
-        if(!textbesar) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter text besar"})
-        if(!textkecil) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter text kecil"})
+        if(!textbesar) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter text besar"})
+        if(!textkecil) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter text kecil"})
        	if(!apikey) return res.json(loghandler.noapikey)
         if(listkey.includes(apikey)){
        zero.textpro("https://textpro.me/create-a-glitch-text-effect-online-free-1026.html", [textbesar,textkecil])
@@ -546,8 +546,8 @@ router.get('/textpro/glitchtiktok', async (req, res, next) => {
           var apikey = req.query.apikey
        	var textbesar = req.query.textbesar
        	var textkecil = req.query.textkecil
-        if(!textbesar) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter text besar"})
-        if(!textkecil) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter text kecil"})
+        if(!textbesar) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter text besar"})
+        if(!textkecil) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter text kecil"})
        	if(!apikey) return res.json(loghandler.noapikey)
         if(listkey.includes(apikey)){
        zero.textpro("https://textpro.me/create-glitch-text-effect-style-tik-tok-983.html", [textbesar,textkecil])
@@ -563,8 +563,8 @@ router.get('/textpro/video-game-classic', async (req, res, next) => {
           var apikey = req.query.apikey
        	var textbesar = req.query.textbesar
        	var textkecil = req.query.textkecil
-        if(!textbesar) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter text besar"})
-        if(!textkecil) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter text kecil"})
+        if(!textbesar) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter text besar"})
+        if(!textkecil) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter text kecil"})
        	if(!apikey) return res.json(loghandler.noapikey)
         if(listkey.includes(apikey)){
        zero.textpro("https://textpro.me/video-game-classic-8-bit-text-effect-1037.html", [textbesar,textkecil])
@@ -580,8 +580,8 @@ router.get('/textpro/marvel-studios', async (req, res, next) => {
           var apikey = req.query.apikey
        	var textbesar = req.query.textbesar
        	var textkecil = req.query.textkecil
-        if(!textbesar) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter text besar"})
-        if(!textkecil) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter text kecil"})
+        if(!textbesar) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter text besar"})
+        if(!textkecil) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter text kecil"})
        	if(!apikey) return res.json(loghandler.noapikey)
         if(listkey.includes(apikey)){
        zero.textpro("https://textpro.me/create-logo-style-marvel-studios-online-971.html", [textbesar,textkecil])
@@ -597,8 +597,8 @@ router.get('/textpro/ninja-logo', async (req, res, next) => {
           var apikey = req.query.apikey
        	var textbesar = req.query.textbesar
        	var textkecil = req.query.textkecil
-        if(!textbesar) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter text besar"})
-        if(!textkecil) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter text kecil"})
+        if(!textbesar) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter text besar"})
+        if(!textkecil) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter text kecil"})
        	if(!apikey) return res.json(loghandler.noapikey)
         if(listkey.includes(apikey)){
        zero.textpro("https://textpro.me/create-ninja-logo-online-935.html", [textbesar,textkecil])
@@ -613,7 +613,7 @@ router.get('/textpro/ninja-logo', async (req, res, next) => {
 router.get('/textpro/green-horror', async (req, res, next) => {
           var apikey = req.query.apikey
        	var text = req.query.text
-        if(!text) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter text"})
+        if(!text) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter text"})
        	if(!apikey) return res.json(loghandler.noapikey)
         if(listkey.includes(apikey)){
        zero.textpro("https://textpro.me/create-green-horror-style-text-effect-online-1036.html", [text])
@@ -628,7 +628,7 @@ router.get('/textpro/green-horror', async (req, res, next) => {
 router.get('/textpro/magma', async (req, res, next) => {
           var apikey = req.query.apikey
        	var text = req.query.text
-        if(!text) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter text"})
+        if(!text) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter text"})
        	if(!apikey) return res.json(loghandler.noapikey)
         if(listkey.includes(apikey)){
        zero.textpro("https://textpro.me/create-a-magma-hot-text-effect-online-1030.html", [text])
@@ -643,7 +643,7 @@ router.get('/textpro/magma', async (req, res, next) => {
 router.get('/textpro/3d-neon-light', async (req, res, next) => {
           var apikey = req.query.apikey
        	var text = req.query.text
-        if(!text) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter text"})
+        if(!text) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter text"})
        	if(!apikey) return res.json(loghandler.noapikey)
         if(listkey.includes(apikey)){
        zero.textpro("https://textpro.me/create-3d-neon-light-text-effect-online-1028.html", [text])
@@ -658,7 +658,7 @@ router.get('/textpro/3d-neon-light', async (req, res, next) => {
 router.get('/textpro/3d-orange-juice', async (req, res, next) => {
           var apikey = req.query.apikey
        	var text = req.query.text
-        if(!text) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter text"})
+        if(!text) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter text"})
        	if(!apikey) return res.json(loghandler.noapikey)
         if(listkey.includes(apikey)){
        zero.textpro("https://textpro.me/create-a-3d-orange-juice-text-effect-online-1084.html", [text])
@@ -673,7 +673,7 @@ router.get('/textpro/3d-orange-juice', async (req, res, next) => {
 router.get('/textpro/chocolate-cake', async (req, res, next) => {
           var apikey = req.query.apikey
        	var text = req.query.text
-        if(!text) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter text"})
+        if(!text) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter text"})
        	if(!apikey) return res.json(loghandler.noapikey)
         if(listkey.includes(apikey)){
        zero.textpro("https://textpro.me/chocolate-cake-text-effect-890.html", [text])
@@ -688,7 +688,7 @@ router.get('/textpro/chocolate-cake', async (req, res, next) => {
 router.get('/textpro/strawberry', async (req, res, next) => {
           var apikey = req.query.apikey
        	var text = req.query.text
-        if(!text) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter text"})
+        if(!text) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter text"})
        	if(!apikey) return res.json(loghandler.noapikey)
         if(listkey.includes(apikey)){
        zero.textpro("https://textpro.me/strawberry-text-effect-online-889.html", [text])
@@ -702,11 +702,11 @@ router.get('/textpro/strawberry', async (req, res, next) => {
 })
 
 //―――――――――――――――――――――――――――――――――――――――――― ┏  Cek ID Game  ┓ ―――――――――――――――――――――――――――――――――――――――――― \\
-router.get('/cekidgame/ff', async (req, res, next) => {
+router.get('/cekidgame/ff1', async (req, res, next) => {
           var apikey = req.query.apikey
        	var uid = req.query.id
        	if(!apikey) return res.json(loghandler.noapikey)
-       if (!uid) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter id"})      
+       if (!uid) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter id"})      
        if(listkey.includes(apikey)){
        fetch(encodeURI(`https://api.gifan.id/trueID/freeFire/?id=${uid}`))
         .then(response => response.text())
@@ -728,12 +728,35 @@ router.get('/cekidgame/ff', async (req, res, next) => {
   res.json(loghandler.apikey)
 }
 })
+router.get('/cekidgame/ff2', async (req, res, next) => {
+          var apikey = req.query.apikey
+       	var id = req.query.id
+       	if(!apikey) return res.json(loghandler.noapikey)
+        if(!id) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter id"})
+        if(listkey.includes(apikey)){
+       scr.nameFreeFire(id)
+	.then(data => {
+		var result = data;
+		res.json({
+             	status: 'true',
+             	author: 'Bintang 1302',
+              result
+             })
+		})
+         .catch(e => {
+         	console.log(e);
+         	res.json(loghandler.error)
+})
+} else {
+  res.json(loghandler.apikey)
+}
+})
 
 router.get('/cekidgame/ml', async (req, res, next) => {
           var apikey = req.query.apikey
        	var uid = req.query.id
        	if(!apikey) return res.json(loghandler.noapikey)
-       if (!uid) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter id", format : "userID.zoneID"})      
+       if (!uid) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter id", format : "userID.zoneID"})      
        if(listkey.includes(apikey)){
        fetch(encodeURI(`https://api.gifan.id/trueID/mobileLegends/?id=${uid}`))
         .then(response => response.text())
@@ -760,7 +783,7 @@ router.get('/cekidgame/aov', async (req, res, next) => {
           var apikey = req.query.apikey
        	var uid = req.query.id
        	if(!apikey) return res.json(loghandler.noapikey)
-       if (!uid) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter id"})      
+       if (!uid) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter id"})      
        if(listkey.includes(apikey)){
        fetch(encodeURI(`https://api.gifan.id/trueID/aov/?id=${uid}`))
         .then(response => response.text())
@@ -787,7 +810,7 @@ router.get('/cekidgame/hd', async (req, res, next) => {
           var apikey = req.query.apikey
        	var uid = req.query.id
        	if(!apikey) return res.json(loghandler.noapikey)
-       if (!uid) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter id"})      
+       if (!uid) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter id"})      
        if(listkey.includes(apikey)){
        fetch(encodeURI(`https://api.gifan.id/trueID/higgsDomino/?id=${uid}`))
         .then(response => response.text())
@@ -814,7 +837,7 @@ router.get('/cekidgame/rgn-x', async (req, res, next) => {
           var apikey = req.query.apikey
        	var uid = req.query.id
        	if(!apikey) return res.json(loghandler.noapikey)
-       if (!uid) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter id"})      
+       if (!uid) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter id"})      
        if(listkey.includes(apikey)){
        fetch(encodeURI(`https://api.gifan.id/trueID/ragnarok-x/?id=${uid}`))
         .then(response => response.text())
@@ -905,7 +928,7 @@ router.get('/news/tempo', async (req, res, next) => {
           var apikey = req.query.apikey
        	var url = req.query.type
        	if(!apikey) return res.json(loghandler.noapikey)
-       if (!url) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter type", list_type : "nasional - bisnis - metro - dunia - bola - sport - cantik - tekno - otomotif - nusantara"})      
+       if (!url) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter type", list_type : "nasional - bisnis - metro - dunia - bola - sport - cantik - tekno - otomotif - nusantara"})      
        if(listkey.includes(apikey)){
        fetch(encodeURI(`https://news-api-zhirrr.vercel.app/v1/tempo-news/${url}`))
         .then(response => response.json())
@@ -928,7 +951,7 @@ router.get('/news/antara', async (req, res, next) => {
           var apikey = req.query.apikey
        	var url = req.query.type
        	if(!apikey) return res.json(loghandler.noapikey)
-       if (!url) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter type", list_type : "terkini - top-news - politik - hukum - ekonomi - metro - sepakbola - olahraga - humaniora - lifestyle - hiburan - dunia - infografik - tekno - otomotif - warta-bumi - rilis-pers"})
+       if (!url) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter type", list_type : "terkini - top-news - politik - hukum - ekonomi - metro - sepakbola - olahraga - humaniora - lifestyle - hiburan - dunia - infografik - tekno - otomotif - warta-bumi - rilis-pers"})
        if(listkey.includes(apikey)){
        fetch(encodeURI(`https://news-api-zhirrr.vercel.app/v1/antara-news/${url}`))
         .then(response => response.json())
@@ -1165,7 +1188,7 @@ router.get('/photooxy/flaming', async (req, res, next) => {
           var apikey = req.query.apikey
        	var text = req.query.text
        	if(!apikey) return res.json(loghandler.noapikey)
-       if (!text) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter text"})      
+       if (!text) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter text"})      
          if(listkey.includes(apikey)){
        oxy("https://photooxy.com/logo-and-text-effects/realistic-flaming-text-effect-online-197.html", [text])
 .then((data) =>{ 
@@ -1183,7 +1206,7 @@ router.get('/photooxy/shadow-sky', async (req, res, next) => {
           var apikey = req.query.apikey
        	var text = req.query.text
        	if(!apikey) return res.json(loghandler.noapikey)
-       if (!text) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter text"})      
+       if (!text) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter text"})      
          if(listkey.includes(apikey)){
        oxy("https://photooxy.com/logo-and-text-effects/shadow-text-effect-in-the-sky-394.html", [text])
 .then((data) =>{ 
@@ -1201,7 +1224,7 @@ router.get('/photooxy/metallic', async (req, res, next) => {
           var apikey = req.query.apikey
        	var text = req.query.text
        	if(!apikey) return res.json(loghandler.noapikey)
-       if (!text) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter text"})      
+       if (!text) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter text"})      
          if(listkey.includes(apikey)){
        oxy("https://photooxy.com/other-design/create-metallic-text-glow-online-188.html", [text])
 .then((data) =>{ 
@@ -1219,7 +1242,7 @@ router.get('/photooxy/naruto', async (req, res, next) => {
           var apikey = req.query.apikey
        	var text = req.query.text
        	if(!apikey) return res.json(loghandler.noapikey)
-       if (!text) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter text"})      
+       if (!text) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter text"})      
          if(listkey.includes(apikey)){
        oxy("https://photooxy.com/manga-and-anime/make-naruto-banner-online-free-378.html", [text])
 .then((data) =>{ 
@@ -1238,7 +1261,7 @@ router.get('/photooxy/pubg-mobile', async (req, res, next) => {
        	var text = req.query.text
        var text2 = req.query.text
        	if(!apikey) return res.json(loghandler.noapikey)
-       if (!text || !text2) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter text & text2"})      
+       if (!text || !text2) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter text & text2"})      
          if(listkey.includes(apikey)){
        oxy("https://photooxy.com/battlegrounds/make-wallpaper-battlegrounds-logo-text-146.html", [text,text2])
 .then((data) =>{ 
@@ -1258,7 +1281,7 @@ router.get('/information/github-stalk', async (req, res, next) => {
           var apikey = req.query.apikey
        	var text = req.query.username
        	if(!apikey) return res.json(loghandler.noapikey)
-        if(!text) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter username"})
+        if(!text) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter username"})
         if(listkey.includes(apikey)){
        fetch(encodeURI(`https://api.github.com/users/${text}`))
         .then(response => response.json())
@@ -1281,7 +1304,7 @@ router.get('/information/jadwalsholat', async (req, res, next) => {
   var apikey = req.query.apikey
   var kota = req.query.kota
  if(!apikey) return res.json(loghandler.noapikey)
-if (!kota) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter kota"})
+if (!kota) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter kota"})
 if(listkey.includes(apikey)){
 const result = await scr.jadwalsholat(kota)
      res.json({
@@ -1291,6 +1314,65 @@ const result = await scr.jadwalsholat(kota)
      })
 } else {
 res.json(loghandler.apikey)
+}
+})
+router.get('/information/jadwaltv', async (req, res, next) => {
+  var apikey = req.query.apikey
+  var channel = req.query.channel
+ if(!apikey) return res.json(loghandler.noapikey)
+if (!channel) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter channel"})
+if(listkey.includes(apikey)){
+const result = await scr.jadwalTV(channel)
+     res.json({
+       status: 'true',
+       author: 'Bintang 1302',
+      result
+     })
+} else {
+res.json(loghandler.apikey)
+}
+})
+router.get('/information/kodepos', async (req, res, next) => {
+          var apikey = req.query.apikey
+       	var text = req.query.kota
+       	if(!apikey) return res.json(loghandler.noapikey)
+       if(!text) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter kota"})
+        if(listkey.includes(apikey)){
+       fetch(encodeURI(`https://kodepos-api-zhirrr.vercel.app/?q=${text}`))
+        .then(response => response.json())
+        .then(data => {
+        var result = data;
+             res.json({
+                 result
+             })
+         })
+         .catch(e => {
+         	console.log(e);
+         	res.json(loghandler.error)
+})
+} else {
+  res.json(loghandler.apikey)
+}
+})
+router.get('/information/covid-world', async (req, res, next) => {
+          var apikey = req.query.apikey
+       	var text = req.query.kata
+       	if(!apikey) return res.json(loghandler.noapikey)
+        if(listkey.includes(apikey)){
+       fetch(encodeURI(`https://covid19-api-zhirrr.vercel.app/api/world`))
+        .then(response => response.json())
+        .then(data => {
+        var result = data;
+             res.json({
+                 result
+             })
+         })
+         .catch(e => {
+         	console.log(e);
+         	res.json(loghandler.error)
+})
+} else {
+  res.json(loghandler.apikey)
 }
 })
 router.get('/information/gempa', async (req, res, next) => {
@@ -1341,7 +1423,7 @@ router.get('/search/google-image', async (req, res, next) => {
           var apikey = req.query.apikey
        	var text = req.query.query
        	if(!apikey) return res.json(loghandler.noapikey)
-       if (!text) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter query"})      
+       if (!text) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter query"})      
          if(listkey.includes(apikey)){
        scr.googleImage(text).then(data => {
         var data = data;
@@ -1362,7 +1444,7 @@ router.get('/search/wallpaper', async (req, res, next) => {
           var apikey = req.query.apikey
        	var text = req.query.query
        	if(!apikey) return res.json(loghandler.noapikey)
-       if (!text) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter query"})      
+       if (!text) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter query"})      
          if(listkey.includes(apikey)){
        scr.wallpaper(text)
 	.then(data => {
@@ -1383,7 +1465,7 @@ router.get('/search/pinterest', async (req, res, next) => {
           var apikey = req.query.apikey
        	var text = req.query.query
        	if(!apikey) return res.json(loghandler.noapikey)
-       if (!text) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter query"})      
+       if (!text) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter query"})      
          if(listkey.includes(apikey)){
        scr.pinterest(text)
 	.then(data => {
@@ -2106,7 +2188,7 @@ router.get('/primbon/artimimpi', async (req, res, next) => {
   var apikey = req.query.apikey
   var mimpi = req.query.mimpi
  if(!apikey) return res.json(loghandler.noapikey)
-if (!mimpi) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter mimpi"})
+if (!mimpi) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter mimpi"})
 if(listkey.includes(apikey)){
 const result = await scr.artimimpi(mimpi)
      res.json({
@@ -2114,22 +2196,10 @@ const result = await scr.artimimpi(mimpi)
        author: 'Bintang 1302',
       result
      })
-} else {
-res.json(loghandler.apikey)
-}
+       .catch(e => {
+         	console.log(e);
+         	res.json(loghandler.error)
 })
-router.get('/primbon/artinama', async (req, res, next) => {
-  var apikey = req.query.apikey
-  var nama = req.query.nama
- if(!apikey) return res.json(loghandler.noapikey)
-if (!nama) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter nama"})
-if(listkey.includes(apikey)){
-const result = await scr.artinama(nama)
-     res.json({
-       status: 'true',
-       author: 'Bintang 1302',
-      result
-     })
 } else {
 res.json(loghandler.apikey)
 }
@@ -2138,7 +2208,7 @@ router.get('/primbon/nomorhphoki', async (req, res, next) => {
   var apikey = req.query.apikey
   var number = req.query.number
  if(!apikey) return res.json(loghandler.noapikey)
-if (!number) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter nomer hp"})
+if (!number) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter nomer hp"})
 if(listkey.includes(apikey)){
 const result = await scr.nomorhoki(number)
      res.json({
@@ -2155,10 +2225,10 @@ router.get('/primbon/zodiac', async (req, res, next) => {
   var dates = req.query.dates
   var months = req.query.months
  if(!apikey) return res.json(loghandler.noapikey)
-if (!dates) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter tanggal"})
-if (!months) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter bulan"})
+if (!dates) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter tanggal"})
+if (!months) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter bulan"})
 if(listkey.includes(apikey)){
-const result = await scr.getZodiac(dates, months)
+const result = await scr.getZodiac(months, dates)
      res.json(
          result
      )
@@ -2445,7 +2515,6 @@ router.get('/islam/niatashar', async (req, res, next) => {
 //―――――――――――――――――――――――――――――――――――――――――― ┏  Game  ┓ ―――――――――――――――――――――――――――――――――――――――――― \\
 router.get('/game/asahotak', async (req, res, next) => {
           var apikey = req.query.apikey
-       	var text = req.query.page
        	if(!apikey) return res.json(loghandler.noapikey)
         if(listkey.includes(apikey)){
        scr.asahotak()
@@ -2467,7 +2536,6 @@ router.get('/game/asahotak', async (req, res, next) => {
 })
 router.get('/game/caklontong', async (req, res, next) => {
           var apikey = req.query.apikey
-       	var text = req.query.page
        	if(!apikey) return res.json(loghandler.noapikey)
         if(listkey.includes(apikey)){
        scr.caklontong()
@@ -2489,7 +2557,6 @@ router.get('/game/caklontong', async (req, res, next) => {
 })
 router.get('/game/family100', async (req, res, next) => {
           var apikey = req.query.apikey
-       	var text = req.query.page
        	if(!apikey) return res.json(loghandler.noapikey)
         if(listkey.includes(apikey)){
        scr.family100()
@@ -2511,7 +2578,6 @@ router.get('/game/family100', async (req, res, next) => {
 })
 router.get('/game/siapakahaku', async (req, res, next) => {
           var apikey = req.query.apikey
-       	var text = req.query.page
        	if(!apikey) return res.json(loghandler.noapikey)
         if(listkey.includes(apikey)){
        scr.siapakahaku()
@@ -2533,7 +2599,6 @@ router.get('/game/siapakahaku', async (req, res, next) => {
 })
 router.get('/game/susunkata', async (req, res, next) => {
           var apikey = req.query.apikey
-       	var text = req.query.page
        	if(!apikey) return res.json(loghandler.noapikey)
         if(listkey.includes(apikey)){
        scr.susunkata()
@@ -2555,7 +2620,6 @@ router.get('/game/susunkata', async (req, res, next) => {
 })
 router.get('/game/tebakbendera', async (req, res, next) => {
           var apikey = req.query.apikey
-       	var text = req.query.page
        	if(!apikey) return res.json(loghandler.noapikey)
         if(listkey.includes(apikey)){
        scr.tebakbendera()
@@ -2577,7 +2641,6 @@ router.get('/game/tebakbendera', async (req, res, next) => {
 })
 router.get('/game/tebakgambar', async (req, res, next) => {
           var apikey = req.query.apikey
-       	var text = req.query.page
        	if(!apikey) return res.json(loghandler.noapikey)
         if(listkey.includes(apikey)){
        scr.tebakgambar()
@@ -2599,7 +2662,6 @@ router.get('/game/tebakgambar', async (req, res, next) => {
 })
 router.get('/game/tebakkabupaten', async (req, res, next) => {
           var apikey = req.query.apikey
-       	var text = req.query.page
        	if(!apikey) return res.json(loghandler.noapikey)
         if(listkey.includes(apikey)){
        scr.tebakkabupaten()
@@ -2621,7 +2683,6 @@ router.get('/game/tebakkabupaten', async (req, res, next) => {
 })
 router.get('/game/tebakkata', async (req, res, next) => {
           var apikey = req.query.apikey
-       	var text = req.query.page
        	if(!apikey) return res.json(loghandler.noapikey)
         if(listkey.includes(apikey)){
        scr.tebakkata()
@@ -2643,7 +2704,6 @@ router.get('/game/tebakkata', async (req, res, next) => {
 })
 router.get('/game/tebakkimia', async (req, res, next) => {
           var apikey = req.query.apikey
-       	var text = req.query.page
        	if(!apikey) return res.json(loghandler.noapikey)
         if(listkey.includes(apikey)){
        scr.tebakkimia()
@@ -2665,7 +2725,6 @@ router.get('/game/tebakkimia', async (req, res, next) => {
 })
 router.get('/game/tebaklirik', async (req, res, next) => {
           var apikey = req.query.apikey
-       	var text = req.query.page
        	if(!apikey) return res.json(loghandler.noapikey)
         if(listkey.includes(apikey)){
        scr.tebaklirik()
@@ -2687,7 +2746,6 @@ router.get('/game/tebaklirik', async (req, res, next) => {
 })
 router.get('/game/tebaktebakan', async (req, res, next) => {
           var apikey = req.query.apikey
-       	var text = req.query.page
        	if(!apikey) return res.json(loghandler.noapikey)
         if(listkey.includes(apikey)){
        scr.tebaktebakan()
@@ -2709,7 +2767,6 @@ router.get('/game/tebaktebakan', async (req, res, next) => {
 })
 router.get('/game/tekateki', async (req, res, next) => {
           var apikey = req.query.apikey
-       	var text = req.query.page
        	if(!apikey) return res.json(loghandler.noapikey)
         if(listkey.includes(apikey)){
        scr.tekateki()
@@ -2735,52 +2792,9 @@ router.get('/other/hilih', async (req, res, next) => {
           var apikey = req.query.apikey
        	var text = req.query.kata
        	if(!apikey) return res.json(loghandler.noapikey)
-        if(!text) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter kata"})
+        if(!text) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter kata"})
         if(listkey.includes(apikey)){
        fetch(encodeURI(`https://hilih-api-zhirrr.vercel.app/api/hilih?kata=${text}`))
-        .then(response => response.json())
-        .then(data => {
-        var result = data;
-             res.json({
-                 result
-             })
-         })
-         .catch(e => {
-         	console.log(e);
-         	res.json(loghandler.error)
-})
-} else {
-  res.json(loghandler.apikey)
-}
-})
-router.get('/other/kodepos', async (req, res, next) => {
-          var apikey = req.query.apikey
-       	var text = req.query.kota
-       	if(!apikey) return res.json(loghandler.noapikey)
-       if(!text) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter kota"})
-        if(listkey.includes(apikey)){
-       fetch(encodeURI(`https://kodepos-api-zhirrr.vercel.app/?q=${text}`))
-        .then(response => response.json())
-        .then(data => {
-        var result = data;
-             res.json({
-                 result
-             })
-         })
-         .catch(e => {
-         	console.log(e);
-         	res.json(loghandler.error)
-})
-} else {
-  res.json(loghandler.apikey)
-}
-})
-router.get('/other/covid-world', async (req, res, next) => {
-          var apikey = req.query.apikey
-       	var text = req.query.kata
-       	if(!apikey) return res.json(loghandler.noapikey)
-        if(listkey.includes(apikey)){
-       fetch(encodeURI(`https://covid19-api-zhirrr.vercel.app/api/world`))
         .then(response => response.json())
         .then(data => {
         var result = data;
@@ -2800,7 +2814,7 @@ router.get('/other/kbbi', async (req, res, next) => {
           var apikey = req.query.apikey
        	var text = req.query.kata
        	if(!apikey) return res.json(loghandler.noapikey)
-       if(!text) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter kata"})
+       if(!text) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter kata"})
         if(listkey.includes(apikey)){
        fetch(encodeURI(`https://kbbi-api-zhirrr.vercel.app/api/kbbi?text=${text}`))
         .then(response => response.json())
@@ -2816,6 +2830,38 @@ router.get('/other/kbbi', async (req, res, next) => {
 })
 } else {
   res.json(loghandler.apikey)
+}
+})
+router.get('/other/lyrics', async (req, res, next) => {
+  var apikey = req.query.apikey
+  var query = req.query.query
+ if(!apikey) return res.json(loghandler.noapikey)
+if (!query) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter nama lagu"})
+if(listkey.includes(apikey)){
+const result = await scr.lyrics(query)
+     res.json({
+       status: 'true',
+       author: 'Bintang 1302',
+       result
+     })
+} else {
+res.json(loghandler.apikey)
+}
+})
+router.get('/other/chord', async (req, res, next) => {
+  var apikey = req.query.apikey
+  var query = req.query.query
+ if(!apikey) return res.json(loghandler.noapikey)
+if (!query) return res.json({ status : false, creator : `${creator}`, message : "[!] Masukan parameter nama lagu"})
+if(listkey.includes(apikey)){
+const result = await scr.chord(query)
+     res.json({
+       status: 'true',
+       author: 'Bintang 1302',
+       result
+     })
+} else {
+res.json(loghandler.apikey)
 }
 })
 

@@ -18,6 +18,21 @@
     <script src="ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.js"></script>
     <script src="index.js"></script>
    <meta property="og:image" content="https://media.discordapp.net/attachments/996447135547539478/1004679216316559410/logo_1.png">
+  <!-- Disabled Right Click -->
+	<script>
+		document.addEventListener("contextmenu", function(e){
+			e.preventDefault();
+		}, false)
+	</script>
+	<!-- Disabled Shortcut Code -->
+	<script>
+		document.addEventListener("keydown", function(e){
+			if (e.ctrlKey || e.keyCode==123) {
+				e.stopPropagation();
+				e.preventDefault();
+			}
+		});
+	</script>
   </head>
   <body>
   <body id="page-top" onload="getvisitor();">
@@ -156,8 +171,9 @@
           </a>
           <div class="collapse" id="ui-cekidgame">
           <ul class="nav flex-column sub-menu">
-         <li class="nav-item"> <a class="nav-link"href="api/cekidgame/ff?id=&apikey=YOUR_KEY">Free Fire <!--(<span style="color: yellow;">Beta</span>)--></a></li>
-         <li class="nav-item"> <a class="nav-link"href="api/cekidgame/ml?id=&apikey=YOUR_KEY">Mobile Legends <!--(<span style="color: yellow;">Beta</span>)--></a></li>
+         <li class="nav-item"> <a class="nav-link"href="api/cekidgame/ff1?id=&apikey=YOUR_KEY">Free Fire 1<!--(<span style="color: yellow;">Beta</span>)--></a></li>
+         <li class="nav-item"> <a class="nav-link"href="api/cekidgame/ff2?id=&apikey=YOUR_KEY">Free Fire 2<!--(<span style="color: yellow;">Beta</span>)--></a></li>
+         <li class="nav-item"> <a class="nav-link"href="api/cekidgame/ml?id=&apikey=YOUR_KEY">Mobile Legends (<span style="color: red;">Bug</span>)</a></li>
          <li class="nav-item"> <a class="nav-link"href="api/cekidgame/aov?id=&apikey=YOUR_KEY"">Arena Of Valor <!--(<span style="color: yellow;">Beta</span>)--></a></li>
          <li class="nav-item"> <a class="nav-link"href="api/cekidgame/hd?id=&apikey=YOUR_KEY">Higgs Domino <!--(<span style="color: red;">Error</span>)--></a></li>
          <li class="nav-item"> <a class="nav-link"href="api/cekidgame/rgn-x?id=&apikey=YOUR_KEY">Ragnarok-X <!--(<span style="color: red;">Error</span>)--></a></li>        
@@ -249,6 +265,9 @@
           <ul class="nav flex-column sub-menu">
           <li class="nav-item"> <a class="nav-link" href="api/information/github-stalk?username=&apikey=YOUR_KEY">Github Stalk</a></li>
           <li class="nav-item"> <a class="nav-link" href="api/information/jadwalsholat?kota=&apikey=YOUR_KEY">Jadwal Sholat</a></li>
+          <li class="nav-item"> <a class="nav-link" href="api/information/jadwaltv?channel=&apikey=YOUR_KEY">Jadwal TV</a></li>
+          <li class="nav-item"> <a class="nav-link" href="api/information/kodepos?kota=&apikey=YOUR_KEY">Kodepos</a></li>
+          <li class="nav-item"> <a class="nav-link" href="api/information/covid-world?apikey=YOUR_KEY">Covid Global</a></li>
           <li class="nav-item"> <a class="nav-link" href="api/information/gempa?apikey=YOUR_KEY">Gempa Now</a></li>
           <li class="nav-item"> <a class="nav-link" href="api/information/gempanow?apikey=YOUR_KEY">Gempa</a></li>
           <li class="nav-item"> <a class="nav-link" href="api/information/tsunami?apikey=YOUR_KEY">Tsunami</a></li>
@@ -324,9 +343,8 @@
           <div class="collapse" id="ui-primbons">
           <ul class="nav flex-column sub-menu">
           <li class="nav-item"> <a class="nav-link" href="api/primbon/artimimpi?mimpi=&apikey=YOUR_KEY">Arti Mimpi</a></li>
-          <li class="nav-item"> <a class="nav-link" href="api/primbon/artinama?nama=&apikey=YOUR_KEY">Arti Nama (<span style="color: yellow;">Beta</span>)</a></li>
           <li class="nav-item"> <a class="nav-link" href="api/primbon/nomorhphoki?number=&apikey=YOUR_KEY">Hoki Nomor HP</a></li>
-          <li class="nav-item"> <a class="nav-link" href="api/primbon/zodiac?dates=&months&apikey=YOUR_KEY">Zodiac</a></li>
+          <li class="nav-item"> <a class="nav-link" href="api/primbon/zodiac?dates=&months=&apikey=YOUR_KEY">Zodiac</a></li>
           </ul>
           </div>
           </li>
@@ -393,9 +411,9 @@
           <div class="collapse" id="ui-oth">
           <ul class="nav flex-column sub-menu">
           <!--<li class="nav-item"> <a class="nav-link" href="/api/other/hilih?kata=ofc&apikey=YOUR_KEY">Hilih</a></li>-->
-          <li class="nav-item"> <a class="nav-link" href="/api/other/kodepos?kota=&apikey=YOUR_KEY">Kodepos</a></li>
-          <li class="nav-item"> <a class="nav-link" href="/api/other/covid-world?apikey=YOUR_KEY">Covid Global</a></li>
-           <li class="nav-item"> <a class="nav-link" href="/api/other/kbbi?kata=&apikey=YOUR_KEY">Kbbi</a></li></li>
+          <li class="nav-item"> <a class="nav-link" href="/api/other/kbbi?kata=&apikey=YOUR_KEY">Kbbi</a></li>
+          <li class="nav-item"> <a class="nav-link" href="/api/other/lyrics?query=&apikey=YOUR_KEY">Lyrics</a></li>
+          <li class="nav-item"> <a class="nav-link" href="/api/other/chord?query=&apikey=YOUR_KEY">Chord</a></li>
           </ul>
           </div>
           </li>    
